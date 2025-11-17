@@ -4,6 +4,10 @@ import { prisma } from '@/lib/prisma'
 import { generateReading } from '@/lib/openai'
 import { PRODUCT_PROMPTS } from '@/lib/prompts/products'
 
+// Force dynamic rendering - this route should never be statically generated
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 export async function POST(request: NextRequest) {
   try {
     await requireAuth()
