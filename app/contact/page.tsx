@@ -15,7 +15,7 @@ export default function ContactPage() {
         </BackLink>
 
         <Section>
-          <div className="space-y-8 max-w-3xl">
+          <div className="space-y-8 max-w-7xl">
             <div className="grid md:grid-cols-2 gap-8 items-center mb-8">
               <div>
                 <p className="text-lg leading-relaxed text-foreground">
@@ -24,7 +24,7 @@ export default function ContactPage() {
               </div>
               <div className="relative w-full h-48 md:h-64 rounded-lg overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=800&fit=crop"
+                  src="/3.png"
                   alt="Communication and connection"
                   fill
                   className="object-cover"

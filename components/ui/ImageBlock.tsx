@@ -29,7 +29,6 @@ export function ImageBlock({
         className="object-cover"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
     </div>
   )
 

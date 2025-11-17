@@ -33,7 +33,7 @@ export default function EthosPage() {
         {/* Design Philosophy */}
         <Section title="Design Philosophy" eyebrow="Visual Identity">
           <ImageBlock
-            imageUrl="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&h=800&fit=crop"
+            imageUrl="/1.png"
             alt="Minimalist design workspace"
             title="Intentional Aesthetics"
             description="ESAMIND's visual identity is intentionally minimal yet warm, mysterious but accessible. The design language prioritizes clarity and readability while maintaining a sense of sophistication and calm. This aesthetic serves as a neutral foundation that can support shops across diverse categories without feeling out of place."
@@ -61,7 +61,7 @@ export default function EthosPage() {
 
         {/* Values */}
         <Section title="Values">
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-6 max-w-7xl">
             <Card
               title="Clarity"
               description="Every ESAMIND project prioritizes clarity—in communication, design, and purpose. We believe that the best digital experiences are those that are immediately understandable, without unnecessary complexity or confusion."
@@ -93,7 +93,7 @@ export default function EthosPage() {
 
         {/* How ESAMIND Builds */}
         <Section title="How ESAMIND Builds">
-          <div className="space-y-6 max-w-3xl">
+          <div className="space-y-6 max-w-7xl">
             <p className="text-lg leading-relaxed">
               New shops and products under the ESAMIND brand are created thoughtfully, with careful consideration of their purpose, audience, and place within the larger ecosystem. Each project begins with a clear vision and is developed through a process that prioritizes quality, authenticity, and meaningful connection.
             </p>
@@ -104,7 +104,7 @@ export default function EthosPage() {
               The building process is iterative and responsive, allowing each project to evolve organically while staying true to ESAMIND's core values. This flexibility is essential to the brand's ability to support diverse creative endeavors while maintaining its identity and standards.
             </p>
           </div>
-          <div className="mt-8 bg-card border border-card-border rounded-lg p-8 max-w-3xl">
+          <div className="mt-8 bg-card border border-card-border rounded-lg p-8 max-w-7xl">
             <h3 className="text-2xl font-serif mb-6 text-foreground">The Building Process</h3>
             <div className="space-y-4">
               <div className="flex gap-4">

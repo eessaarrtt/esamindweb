@@ -32,7 +32,7 @@ export default function AboutPage() {
         {/* The Story Behind ESAMIND */}
         <Section title="The Story Behind ESAMIND" eyebrow="Our Origin">
           <ImageBlock
-            imageUrl="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop"
+            imageUrl="/BehindESAMIND.png"
             alt="Creative workspace and ideation"
             title="Born from Flexibility"
             description="ESAMIND was born from a recognition that creative work doesn't need to be confined to a single category or niche. The brand emerged as a response to the limitations of traditional single-focus businesses, which often struggle to adapt when new opportunities arise or when creative interests evolve."
@@ -50,7 +50,7 @@ export default function AboutPage() {
         {/* About the Creator */}
         <Section title="About the Creator">
           <ImageBlock
-            imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop"
+            imageUrl="/esara.png"
             alt="Creative professional at work"
             title="Esara Vance"
             description="Esara Vance is the creative mind behind ESAMIND. With a background spanning multiple disciplines, Esara brings a versatile approach to building digital experiences. The philosophy is simple: create with purpose, build with care, and maintain the flexibility to explore new directions."
@@ -63,7 +63,7 @@ export default function AboutPage() {
               Esara approaches each new shop or project as both a creative experiment and a carefully crafted experience. The goal is never to fit into a single category, but to create meaningful digital spaces that serve their communities well, regardless of their specific focus or industry.
             </p>
           </ImageBlock>
-          <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-4xl">
+          <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-7xl">
             <div className="bg-card border border-card-border rounded-lg p-6 text-center">
               <h4 className="text-lg font-serif mb-2 text-foreground">Versatile</h4>
               <p className="text-sm text-muted leading-relaxed">
@@ -87,7 +87,7 @@ export default function AboutPage() {
 
         {/* The Long-Term Vision */}
         <Section title="The Long-Term Vision">
-          <div className="space-y-6 max-w-3xl">
+          <div className="space-y-6 max-w-7xl">
             <p className="text-lg leading-relaxed">
               ESAMIND is designed to grow as a multi-shop ecosystem—a creative laboratory where new ideas can be tested, refined, and launched as independent marketplaces. Each shop maintains its own identity while benefiting from the shared infrastructure, values, and aesthetic that define the ESAMIND brand.
             </p>
@@ -98,7 +98,7 @@ export default function AboutPage() {
               As ESAMIND evolves, it will continue to serve as both a creative platform and a statement of values—a space where thoughtful digital experiences can thrive, regardless of their specific category or niche. The future is open, and ESAMIND is built to embrace it.
             </p>
           </div>
-          <div className="mt-8 bg-card border border-card-border rounded-lg p-8 max-w-3xl">
+          <div className="mt-8 bg-card border border-card-border rounded-lg p-8 max-w-7xl">
             <h3 className="text-2xl font-serif mb-4 text-foreground">Looking Ahead</h3>
             <ul className="space-y-3 text-muted">
               <li className="flex items-start gap-3">

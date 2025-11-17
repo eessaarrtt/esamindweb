@@ -25,17 +25,18 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 md:py-32">
-        <div className="max-w-7 mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
-              <h1 className="text-6xl md:text-7xl font-serif mb-8 text-foreground leading-tight">
+      <section style={{ backgroundImage: 'url(/herobg.png)',  backgroundPosition: 'center' , backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} >
+      <div className="container mx-auto px-4 py-24 md:py-32">
+        <div className="max-w-7xl mx-auto">
+          <div className="  mb-16">
+            <div style={{ alignItems: 'end'}} className=' flex flex-col text-right '>
+              <h1 className="text-6xl md:text-7xl font-serif mb-8 text-white leading-tight">
                 ESAMIND
               </h1>
-              <p className="text-2xl md:text-3xl mb-6 text-muted font-light leading-relaxed">
+              <p className="text-2xl md:text-3xl mb-6 text-white font-light leading-relaxed">
                 A mindful home for meaningful digital creation
               </p>
-              <p className="text-lg text-muted max-w-2xl leading-relaxed mb-8">
+              <p className="text-lg text-white max-w-2xl leading-relaxed mb-8">
                 ESAMIND is a multi-direction creative brand platform, connecting independent shops and projects under one thoughtful umbrella. Each shop operates with its own identity while sharing our commitment to quality, intentional design, and mindful creation.
               </p>
               <div className="flex gap-4">
@@ -47,24 +48,14 @@ export default async function Home() {
                 </Button>
               </div>
             </div>
-            <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop"
-                alt="Creative workspace"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
-            </div>
           </div>
+        </div>
         </div>
       </section>
 
       <PageShell>
         {/* Stats Section */}
-        <Section title="ESAMIND by the Numbers" eyebrow="Our Impact">
+        {/* <Section title="ESAMIND by the Numbers" eyebrow="Our Impact">
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <div className="bg-card border border-card-border rounded-lg p-6 text-center hover:shadow-md transition-all hover:border-accent/30">
               <div className="text-4xl font-bold text-accent mb-2">10+</div>
@@ -79,12 +70,12 @@ export default async function Home() {
               <div className="text-sm text-muted">Products Available</div>
             </div>
           </div>
-        </Section>
+        </Section> */}
 
         {/* What ESAMIND Is */}
         <Section title="What ESAMIND Is">
           <ImageBlock
-            imageUrl="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop"
+            imageUrl="/ourp.png"
             alt="Creative collaboration and workspace"
             title="A Multi-Direction Creative Platform"
             description="ESAMIND is a personal creative brand built to host multiple independent shops and projects. Each shop operates with its own identity, products, and audience, while ESAMIND serves as the connective thread that binds them together."
@@ -191,7 +182,7 @@ export default async function Home() {
         {/* Brand Direction */}
         <Section title="Brand Direction">
           <ImageBlock
-            imageUrl="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop"
+            imageUrl="/BrandDirection.png"
             alt="Minimalist design and thoughtful creation"
             title="Built on Principles, Not Products"
             description="ESAMIND is built on a foundation of clarity, quality, and intentional design. The brand aesthetic is minimal yet warm, mysterious but accessible, professional yet human. Every shop and project under the ESAMIND umbrella reflects these core principles."

@@ -39,7 +39,7 @@ export default async function ShopsPage() {
             </div>
             <div className="relative w-full h-64 md:h-80 rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=800&fit=crop"
+                src="/2.png"
                 alt="Marketplace and shop diversity"
                 fill
                 className="object-cover"
