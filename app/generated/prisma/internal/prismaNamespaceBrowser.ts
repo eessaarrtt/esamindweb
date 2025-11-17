@@ -52,7 +52,8 @@ export const ModelName = {
   EtsyShop: 'EtsyShop',
   EtsyListing: 'EtsyListing',
   Order: 'Order',
-  Shop: 'Shop'
+  Shop: 'Shop',
+  Prompt: 'Prompt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -62,6 +63,9 @@ export type ModelName = (typeof ModelName)[keyof typeof ModelName]
  */
 
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 } as const)
 
@@ -108,6 +112,11 @@ export const OrderScalarFieldEnum = {
   shopId: 'shopId',
   status: 'status',
   readingText: 'readingText',
+  openaiModel: 'openaiModel',
+  openaiInputTokens: 'openaiInputTokens',
+  openaiOutputTokens: 'openaiOutputTokens',
+  openaiTotalTokens: 'openaiTotalTokens',
+  openaiCost: 'openaiCost',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -130,12 +139,33 @@ export const ShopScalarFieldEnum = {
 export type ShopScalarFieldEnum = (typeof ShopScalarFieldEnum)[keyof typeof ShopScalarFieldEnum]
 
 
+export const PromptScalarFieldEnum = {
+  id: 'id',
+  productCode: 'productCode',
+  template: 'template',
+  category: 'category',
+  isCustom: 'isCustom',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PromptScalarFieldEnum = (typeof PromptScalarFieldEnum)[keyof typeof PromptScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
 export const NullsOrder = {

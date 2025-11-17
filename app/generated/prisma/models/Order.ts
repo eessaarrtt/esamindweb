@@ -29,11 +29,19 @@ export type AggregateOrder = {
 export type OrderAvgAggregateOutputType = {
   id: number | null
   shopId: number | null
+  openaiInputTokens: number | null
+  openaiOutputTokens: number | null
+  openaiTotalTokens: number | null
+  openaiCost: runtime.Decimal | null
 }
 
 export type OrderSumAggregateOutputType = {
   id: number | null
   shopId: number | null
+  openaiInputTokens: number | null
+  openaiOutputTokens: number | null
+  openaiTotalTokens: number | null
+  openaiCost: runtime.Decimal | null
 }
 
 export type OrderMinAggregateOutputType = {
@@ -50,6 +58,11 @@ export type OrderMinAggregateOutputType = {
   shopId: number | null
   status: $Enums.OrderStatus | null
   readingText: string | null
+  openaiModel: string | null
+  openaiInputTokens: number | null
+  openaiOutputTokens: number | null
+  openaiTotalTokens: number | null
+  openaiCost: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,6 +81,11 @@ export type OrderMaxAggregateOutputType = {
   shopId: number | null
   status: $Enums.OrderStatus | null
   readingText: string | null
+  openaiModel: string | null
+  openaiInputTokens: number | null
+  openaiOutputTokens: number | null
+  openaiTotalTokens: number | null
+  openaiCost: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -86,6 +104,11 @@ export type OrderCountAggregateOutputType = {
   shopId: number
   status: number
   readingText: number
+  openaiModel: number
+  openaiInputTokens: number
+  openaiOutputTokens: number
+  openaiTotalTokens: number
+  openaiCost: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -95,11 +118,19 @@ export type OrderCountAggregateOutputType = {
 export type OrderAvgAggregateInputType = {
   id?: true
   shopId?: true
+  openaiInputTokens?: true
+  openaiOutputTokens?: true
+  openaiTotalTokens?: true
+  openaiCost?: true
 }
 
 export type OrderSumAggregateInputType = {
   id?: true
   shopId?: true
+  openaiInputTokens?: true
+  openaiOutputTokens?: true
+  openaiTotalTokens?: true
+  openaiCost?: true
 }
 
 export type OrderMinAggregateInputType = {
@@ -116,6 +147,11 @@ export type OrderMinAggregateInputType = {
   shopId?: true
   status?: true
   readingText?: true
+  openaiModel?: true
+  openaiInputTokens?: true
+  openaiOutputTokens?: true
+  openaiTotalTokens?: true
+  openaiCost?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -134,6 +170,11 @@ export type OrderMaxAggregateInputType = {
   shopId?: true
   status?: true
   readingText?: true
+  openaiModel?: true
+  openaiInputTokens?: true
+  openaiOutputTokens?: true
+  openaiTotalTokens?: true
+  openaiCost?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -152,6 +193,11 @@ export type OrderCountAggregateInputType = {
   shopId?: true
   status?: true
   readingText?: true
+  openaiModel?: true
+  openaiInputTokens?: true
+  openaiOutputTokens?: true
+  openaiTotalTokens?: true
+  openaiCost?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -257,6 +303,11 @@ export type OrderGroupByOutputType = {
   shopId: number
   status: $Enums.OrderStatus
   readingText: string | null
+  openaiModel: string | null
+  openaiInputTokens: number | null
+  openaiOutputTokens: number | null
+  openaiTotalTokens: number | null
+  openaiCost: runtime.Decimal | null
   createdAt: Date
   updatedAt: Date
   _count: OrderCountAggregateOutputType | null
@@ -298,6 +349,11 @@ export type OrderWhereInput = {
   shopId?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   readingText?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiModel?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiInputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiOutputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiTotalTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiCost?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   shop?: Prisma.XOR<Prisma.EtsyShopScalarRelationFilter, Prisma.EtsyShopWhereInput>
@@ -317,6 +373,11 @@ export type OrderOrderByWithRelationInput = {
   shopId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readingText?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiCost?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   shop?: Prisma.EtsyShopOrderByWithRelationInput
@@ -339,6 +400,11 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   shopId?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   readingText?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiModel?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiInputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiOutputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiTotalTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiCost?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   shop?: Prisma.XOR<Prisma.EtsyShopScalarRelationFilter, Prisma.EtsyShopWhereInput>
@@ -358,6 +424,11 @@ export type OrderOrderByWithAggregationInput = {
   shopId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readingText?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiModel?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrderInput | Prisma.SortOrder
+  openaiCost?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
@@ -384,6 +455,11 @@ export type OrderScalarWhereWithAggregatesInput = {
   shopId?: Prisma.IntWithAggregatesFilter<"Order"> | number
   status?: Prisma.EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
   readingText?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  openaiModel?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  openaiInputTokens?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
+  openaiOutputTokens?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
+  openaiTotalTokens?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
+  openaiCost?: Prisma.DecimalNullableWithAggregatesFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
 }
@@ -400,6 +476,11 @@ export type OrderCreateInput = {
   productCode: string
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   shop: Prisma.EtsyShopCreateNestedOneWithoutOrdersInput
@@ -419,6 +500,11 @@ export type OrderUncheckedCreateInput = {
   shopId: number
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -435,6 +521,11 @@ export type OrderUpdateInput = {
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   shop?: Prisma.EtsyShopUpdateOneRequiredWithoutOrdersNestedInput
@@ -454,6 +545,11 @@ export type OrderUncheckedUpdateInput = {
   shopId?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -472,6 +568,11 @@ export type OrderCreateManyInput = {
   shopId: number
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -488,6 +589,11 @@ export type OrderUpdateManyMutationInput = {
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -506,6 +612,11 @@ export type OrderUncheckedUpdateManyInput = {
   shopId?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -534,6 +645,11 @@ export type OrderCountOrderByAggregateInput = {
   shopId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readingText?: Prisma.SortOrder
+  openaiModel?: Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrder
+  openaiCost?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -541,6 +657,10 @@ export type OrderCountOrderByAggregateInput = {
 export type OrderAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   shopId?: Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrder
+  openaiCost?: Prisma.SortOrder
 }
 
 export type OrderMaxOrderByAggregateInput = {
@@ -557,6 +677,11 @@ export type OrderMaxOrderByAggregateInput = {
   shopId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readingText?: Prisma.SortOrder
+  openaiModel?: Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrder
+  openaiCost?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -575,6 +700,11 @@ export type OrderMinOrderByAggregateInput = {
   shopId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   readingText?: Prisma.SortOrder
+  openaiModel?: Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrder
+  openaiCost?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -582,6 +712,10 @@ export type OrderMinOrderByAggregateInput = {
 export type OrderSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   shopId?: Prisma.SortOrder
+  openaiInputTokens?: Prisma.SortOrder
+  openaiOutputTokens?: Prisma.SortOrder
+  openaiTotalTokens?: Prisma.SortOrder
+  openaiCost?: Prisma.SortOrder
 }
 
 export type OrderCreateNestedManyWithoutShopInput = {
@@ -634,6 +768,22 @@ export type EnumOrderStatusFieldUpdateOperationsInput = {
   set?: $Enums.OrderStatus
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableDecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
 export type OrderCreateWithoutShopInput = {
   etsyReceiptId: string
   etsyTransactionId?: string | null
@@ -646,6 +796,11 @@ export type OrderCreateWithoutShopInput = {
   productCode: string
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -663,6 +818,11 @@ export type OrderUncheckedCreateWithoutShopInput = {
   productCode: string
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -674,6 +834,7 @@ export type OrderCreateOrConnectWithoutShopInput = {
 
 export type OrderCreateManyShopInputEnvelope = {
   data: Prisma.OrderCreateManyShopInput | Prisma.OrderCreateManyShopInput[]
+  skipDuplicates?: boolean
 }
 
 export type OrderUpsertWithWhereUniqueWithoutShopInput = {
@@ -709,6 +870,11 @@ export type OrderScalarWhereInput = {
   shopId?: Prisma.IntFilter<"Order"> | number
   status?: Prisma.EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
   readingText?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiModel?: Prisma.StringNullableFilter<"Order"> | string | null
+  openaiInputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiOutputTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiTotalTokens?: Prisma.IntNullableFilter<"Order"> | number | null
+  openaiCost?: Prisma.DecimalNullableFilter<"Order"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
 }
@@ -726,6 +892,11 @@ export type OrderCreateManyShopInput = {
   productCode: string
   status?: $Enums.OrderStatus
   readingText?: string | null
+  openaiModel?: string | null
+  openaiInputTokens?: number | null
+  openaiOutputTokens?: number | null
+  openaiTotalTokens?: number | null
+  openaiCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -742,6 +913,11 @@ export type OrderUpdateWithoutShopInput = {
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -759,6 +935,11 @@ export type OrderUncheckedUpdateWithoutShopInput = {
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -776,6 +957,11 @@ export type OrderUncheckedUpdateManyWithoutShopInput = {
   productCode?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
   readingText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiModel?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  openaiInputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiOutputTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiTotalTokens?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  openaiCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -796,6 +982,11 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   shopId?: boolean
   status?: boolean
   readingText?: boolean
+  openaiModel?: boolean
+  openaiInputTokens?: boolean
+  openaiOutputTokens?: boolean
+  openaiTotalTokens?: boolean
+  openaiCost?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   shop?: boolean | Prisma.EtsyShopDefaultArgs<ExtArgs>
@@ -815,6 +1006,11 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   shopId?: boolean
   status?: boolean
   readingText?: boolean
+  openaiModel?: boolean
+  openaiInputTokens?: boolean
+  openaiOutputTokens?: boolean
+  openaiTotalTokens?: boolean
+  openaiCost?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   shop?: boolean | Prisma.EtsyShopDefaultArgs<ExtArgs>
@@ -834,6 +1030,11 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   shopId?: boolean
   status?: boolean
   readingText?: boolean
+  openaiModel?: boolean
+  openaiInputTokens?: boolean
+  openaiOutputTokens?: boolean
+  openaiTotalTokens?: boolean
+  openaiCost?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   shop?: boolean | Prisma.EtsyShopDefaultArgs<ExtArgs>
@@ -853,11 +1054,16 @@ export type OrderSelectScalar = {
   shopId?: boolean
   status?: boolean
   readingText?: boolean
+  openaiModel?: boolean
+  openaiInputTokens?: boolean
+  openaiOutputTokens?: boolean
+  openaiTotalTokens?: boolean
+  openaiCost?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "etsyReceiptId" | "etsyTransactionId" | "buyerName" | "buyerUserId" | "personalization" | "name" | "age" | "question" | "productCode" | "shopId" | "status" | "readingText" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "etsyReceiptId" | "etsyTransactionId" | "buyerName" | "buyerUserId" | "personalization" | "name" | "age" | "question" | "productCode" | "shopId" | "status" | "readingText" | "openaiModel" | "openaiInputTokens" | "openaiOutputTokens" | "openaiTotalTokens" | "openaiCost" | "createdAt" | "updatedAt", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   shop?: boolean | Prisma.EtsyShopDefaultArgs<ExtArgs>
 }
@@ -887,6 +1093,11 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     shopId: number
     status: $Enums.OrderStatus
     readingText: string | null
+    openaiModel: string | null
+    openaiInputTokens: number | null
+    openaiOutputTokens: number | null
+    openaiTotalTokens: number | null
+    openaiCost: runtime.Decimal | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["order"]>
@@ -1326,6 +1537,11 @@ export interface OrderFieldRefs {
   readonly shopId: Prisma.FieldRef<"Order", 'Int'>
   readonly status: Prisma.FieldRef<"Order", 'OrderStatus'>
   readonly readingText: Prisma.FieldRef<"Order", 'String'>
+  readonly openaiModel: Prisma.FieldRef<"Order", 'String'>
+  readonly openaiInputTokens: Prisma.FieldRef<"Order", 'Int'>
+  readonly openaiOutputTokens: Prisma.FieldRef<"Order", 'Int'>
+  readonly openaiTotalTokens: Prisma.FieldRef<"Order", 'Int'>
+  readonly openaiCost: Prisma.FieldRef<"Order", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"Order", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Order", 'DateTime'>
 }
@@ -1557,6 +1773,7 @@ export type OrderCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * The data used to create many Orders.
    */
   data: Prisma.OrderCreateManyInput | Prisma.OrderCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1575,6 +1792,7 @@ export type OrderCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extension
    * The data used to create many Orders.
    */
   data: Prisma.OrderCreateManyInput | Prisma.OrderCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

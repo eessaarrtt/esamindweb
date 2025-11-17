@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -50,6 +50,12 @@ model Order {
   shopId          Int
   status          OrderStatus @default(PENDING) // PENDING, GENERATED, SENT, ERROR
   readingText     String?
+  // OpenAI usage tracking
+  openaiModel     String?  // модель OpenAI, которая использовалась
+  openaiInputTokens Int?   // количество input токенов
+  openaiOutputTokens Int?  // количество output токенов
+  openaiTotalTokens Int?   // общее количество токенов
+  openaiCost      Decimal? @db.Decimal(10, 6) // стоимость в USD
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }
@@ -69,6 +75,16 @@ model Shop {
   category    String   // e.g., "Spiritual", "Digital Tools", "Design", etc.
   externalUrl String?  // Link to Etsy or other marketplace
   featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Prompt {
+  id          Int      @id @default(autoincrement())
+  productCode String   @unique // ProductCode из lib/products.ts
+  template    String   @db.Text // Шаблон промпта с плейсхолдерами ${input.name}, ${input.age}, etc.
+  category    String   // "tarot" | "energy" | "ritual" | "premium"
+  isCustom    Boolean  @default(true) // true = кастомный промпт, false = автоматически сгенерированный
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

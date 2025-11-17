@@ -7,12 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:shops": "tsx scripts/seed-shops.ts"
+    "seed:shops": "tsx scripts/seed-shops.ts",
+    "seed:prompts": "tsx scripts/seed-prompts.ts",
+    "test:prisma": "tsx scripts/test-prisma-connection.ts",
+    "test:openai": "tsx scripts/test-openai.ts",
+    "test:order": "tsx scripts/create-test-order.ts"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@prisma/client": "^6.19.0",
     "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
     "next": "16.0.3",
     "next-themes": "^0.4.6",
     "openai": "^6.9.0",

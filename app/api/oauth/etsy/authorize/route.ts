@@ -25,6 +25,8 @@ export async function GET() {
     'listings_w',
     'transactions_r',
     'transactions_w',
+    'conversations_r', // Чтение conversations (для поиска существующих)
+    'conversations_w', // Создание и отправка сообщений покупателям
   ].join(' ')
 
   const authUrl = `https://www.etsy.com/oauth/connect?response_type=code&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scopes)}&client_id=${clientId}&state=esamind`

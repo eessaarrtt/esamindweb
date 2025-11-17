@@ -64,3 +64,8 @@ export type Order = Prisma.OrderModel
  * 
  */
 export type Shop = Prisma.ShopModel
+/**
+ * Model Prompt
+ * 
+ */
+export type Prompt = Prisma.PromptModel

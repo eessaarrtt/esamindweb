@@ -1336,6 +1336,7 @@ export type EtsyShopCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * The data used to create many EtsyShops.
    */
   data: Prisma.EtsyShopCreateManyInput | Prisma.EtsyShopCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1354,6 +1355,7 @@ export type EtsyShopCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extens
    * The data used to create many EtsyShops.
    */
   data: Prisma.EtsyShopCreateManyInput | Prisma.EtsyShopCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**

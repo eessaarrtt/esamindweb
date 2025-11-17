@@ -393,7 +393,8 @@ export const ModelName = {
   EtsyShop: 'EtsyShop',
   EtsyListing: 'EtsyListing',
   Order: 'Order',
-  Shop: 'Shop'
+  Shop: 'Shop',
+  Prompt: 'Prompt'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -409,7 +410,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "etsyShop" | "etsyListing" | "order" | "shop"
+    modelProps: "etsyShop" | "etsyListing" | "order" | "shop" | "prompt"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -709,6 +710,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Prompt: {
+      payload: Prisma.$PromptPayload<ExtArgs>
+      fields: Prisma.PromptFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.PromptFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.PromptFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        findFirst: {
+          args: Prisma.PromptFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.PromptFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        findMany: {
+          args: Prisma.PromptFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>[]
+        }
+        create: {
+          args: Prisma.PromptCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        createMany: {
+          args: Prisma.PromptCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.PromptCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>[]
+        }
+        delete: {
+          args: Prisma.PromptDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        update: {
+          args: Prisma.PromptUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        deleteMany: {
+          args: Prisma.PromptDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.PromptUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.PromptUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>[]
+        }
+        upsert: {
+          args: Prisma.PromptUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$PromptPayload>
+        }
+        aggregate: {
+          args: Prisma.PromptAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregatePrompt>
+        }
+        groupBy: {
+          args: Prisma.PromptGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PromptGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.PromptCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.PromptCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -739,6 +814,9 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
  */
 
 export const TransactionIsolationLevel = runtime.makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 } as const)
 
@@ -785,6 +863,11 @@ export const OrderScalarFieldEnum = {
   shopId: 'shopId',
   status: 'status',
   readingText: 'readingText',
+  openaiModel: 'openaiModel',
+  openaiInputTokens: 'openaiInputTokens',
+  openaiOutputTokens: 'openaiOutputTokens',
+  openaiTotalTokens: 'openaiTotalTokens',
+  openaiCost: 'openaiCost',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -807,12 +890,33 @@ export const ShopScalarFieldEnum = {
 export type ShopScalarFieldEnum = (typeof ShopScalarFieldEnum)[keyof typeof ShopScalarFieldEnum]
 
 
+export const PromptScalarFieldEnum = {
+  id: 'id',
+  productCode: 'productCode',
+  template: 'template',
+  category: 'category',
+  isCustom: 'isCustom',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PromptScalarFieldEnum = (typeof PromptScalarFieldEnum)[keyof typeof PromptScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
 export const NullsOrder = {
@@ -837,9 +941,23 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
 
 
 /**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+/**
+ * Reference to a field of type 'String[]'
+ */
+export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
     
 
 
@@ -851,9 +969,37 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 
 
 /**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
  * Reference to a field of type 'OrderStatus'
  */
 export type EnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'OrderStatus[]'
+ */
+export type ListEnumOrderStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'OrderStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal'
+ */
+export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+/**
+ * Reference to a field of type 'Decimal[]'
+ */
+export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -868,6 +1014,13 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**
@@ -961,6 +1114,7 @@ export type GlobalOmitConfig = {
   etsyListing?: Prisma.EtsyListingOmit
   order?: Prisma.OrderOmit
   shop?: Prisma.ShopOmit
+  prompt?: Prisma.PromptOmit
 }
 
 /* Types for Logging */

@@ -19,6 +19,8 @@ export function OrderActions({ order }: { order: Order }) {
     setError('')
 
     try {
+      console.log('[OrderActions] Generating reading for order', { orderId: order.id })
+      
       const res = await fetch('/api/readings/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -28,12 +30,15 @@ export function OrderActions({ order }: { order: Order }) {
       const data = await res.json()
 
       if (!res.ok) {
+        console.error('[OrderActions] Generation failed', { orderId: order.id, error: data.error })
         setError(data.error || 'Generation failed')
         return
       }
 
+      console.log('[OrderActions] Reading generated successfully', { orderId: order.id })
       router.refresh()
     } catch (err) {
+      console.error('[OrderActions] Generation error', { orderId: order.id, error: err })
       setError('An error occurred')
     } finally {
       setLoading(false)
@@ -45,17 +50,22 @@ export function OrderActions({ order }: { order: Order }) {
     setError('')
 
     try {
+      console.log('[OrderActions] Marking order as sent', { orderId: order.id })
+      
       const res = await fetch(`/api/orders/${order.id}/mark-sent`, {
         method: 'POST',
       })
 
       if (!res.ok) {
+        console.error('[OrderActions] Mark sent failed', { orderId: order.id })
         setError('Failed to mark as sent')
         return
       }
 
+      console.log('[OrderActions] Order marked as sent', { orderId: order.id })
       router.refresh()
     } catch (err) {
+      console.error('[OrderActions] Mark sent error', { orderId: order.id, error: err })
       setError('An error occurred')
     } finally {
       setLoading(false)

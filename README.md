@@ -11,7 +11,7 @@ ESAMIND connects to one or more Etsy shops, receives paid orders for digital rea
 - **Framework**: Next.js 16 (App Router) with TypeScript
 - **Deployment**: Vercel
 - **Styling**: Tailwind CSS with a calm, mystical aesthetic
-- **Database**: SQLite via Prisma (easily switchable to Postgres)
+- **Database**: Vercel Postgres (PostgreSQL) via Prisma
 - **APIs**: Etsy v3 REST API, OpenAI Chat Completions
 - **State Management**: React Server Components + Client Components
 
@@ -40,7 +40,9 @@ DEFAULT_ETSY_SHOP_ID=
 
 ADMIN_EMAIL=your-email@example.com
 ADMIN_PASSWORD_HASH=your-bcrypt-hash
-DATABASE_URL=file:./dev.db
+# Для локальной разработки используйте Vercel Postgres или локальный Postgres
+# Получите URL через: vercel env pull .env.local
+DATABASE_URL=postgresql://user:password@host:5432/database?schema=public
 ```
 
 **Important**: 
@@ -58,17 +60,50 @@ DATABASE_URL=file:./dev.db
 
 ### 3. Database Setup
 
-Run Prisma migrations to create the database:
+#### Для Production (Vercel Postgres):
+
+1. Создайте базу данных в Vercel Dashboard → Storage → Create Database → Postgres
+2. Vercel автоматически добавит переменные окружения
+3. В Vercel Dashboard установите `DATABASE_URL` = `POSTGRES_PRISMA_URL`
+
+#### Для локальной разработки:
+
+**Вариант A: Использовать Vercel Postgres локально (рекомендуется)**
+
+```bash
+# Установите Vercel CLI (если еще не установлен)
+npm i -g vercel
+
+# Логин в Vercel
+vercel login
+
+# Подключите проект (если еще не подключен)
+vercel link
+
+# Получите переменные окружения
+vercel env pull .env.local
+
+# Используйте POSTGRES_PRISMA_URL как DATABASE_URL
+# Или запустите автоматический скрипт:
+./scripts/setup-vercel-postgres.sh
+```
+
+**Вариант B: Локальный Postgres**
+
+```bash
+# Установите Postgres локально или используйте Docker
+# В .env укажите:
+DATABASE_URL="postgresql://postgres:password@localhost:5432/esamind?schema=public"
+```
+
+Затем запустите миграции:
 
 ```bash
 npx prisma migrate dev --name init
-```
-
-Generate Prisma Client:
-
-```bash
 npx prisma generate
 ```
+
+**Подробные инструкции:** см. `docs/VERCEL_POSTGRES_SETUP.md`
 
 ### 4. Run Development Server
 
@@ -167,8 +202,13 @@ Visit [http://localhost:3000](http://localhost:3000)
 3. Set environment variables in Vercel dashboard
 4. Deploy
 
-For production, consider:
-- Switching to Postgres (update `DATABASE_URL` and Prisma schema)
+For production:
+- Database: Vercel Postgres (already configured in schema)
+- Set up Vercel Postgres in Vercel Dashboard → Storage
+- Use `POSTGRES_PRISMA_URL` as `DATABASE_URL` in Vercel environment variables
+- See `docs/VERCEL_POSTGRES_SETUP.md` for detailed setup instructions
+
+Future improvements:
 - Setting up Vercel Cron for automatic order syncing
 - Adding proper session management (NextAuth.js recommended)
 

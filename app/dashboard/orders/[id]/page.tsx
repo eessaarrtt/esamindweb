@@ -87,6 +87,41 @@ export default async function OrderDetailPage({
         {order.readingText && (
           <div className="bg-[#111827] p-6 rounded-lg">
             <h2 className="text-2xl font-serif text-[#f5e0c3] mb-4">Generated Reading</h2>
+            {order.openaiTotalTokens && (
+              <div className="mb-4 p-4 bg-[#1f2937] rounded-lg border border-[#374151]">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div>
+                    <div className="text-[#9ca3af] text-xs mb-1">Model</div>
+                    <div className="text-[#f9fafb] font-mono">{order.openaiModel || 'N/A'}</div>
+                  </div>
+                  <div>
+                    <div className="text-[#9ca3af] text-xs mb-1">Input Tokens</div>
+                    <div className="text-[#f9fafb]">{order.openaiInputTokens?.toLocaleString() || 'N/A'}</div>
+                  </div>
+                  <div>
+                    <div className="text-[#9ca3af] text-xs mb-1">Output Tokens</div>
+                    <div className="text-[#f9fafb]">{order.openaiOutputTokens?.toLocaleString() || 'N/A'}</div>
+                  </div>
+                  <div>
+                    <div className="text-[#9ca3af] text-xs mb-1">Cost</div>
+                    <div className="text-[#f59e0b] font-semibold">
+                      {order.openaiCost 
+                        ? new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                            minimumFractionDigits: 4,
+                            maximumFractionDigits: 6,
+                          }).format(Number(order.openaiCost))
+                        : 'N/A'}
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-2 pt-2 border-t border-[#374151]">
+                  <div className="text-[#9ca3af] text-xs">Total Tokens</div>
+                  <div className="text-[#f9fafb] font-semibold">{order.openaiTotalTokens.toLocaleString()}</div>
+                </div>
+              </div>
+            )}
             <div className="bg-[#050409] p-4 rounded border border-[#374151] whitespace-pre-wrap text-[#f9fafb]">
               {order.readingText}
             </div>

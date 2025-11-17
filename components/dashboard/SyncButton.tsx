@@ -15,6 +15,8 @@ export function SyncButton() {
     setResult(null)
 
     try {
+      console.log('[SyncButton] Starting orders sync')
+      
       const res = await fetch('/api/orders/sync', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -23,13 +25,20 @@ export function SyncButton() {
       const data = await res.json()
 
       if (!res.ok) {
+        console.error('[SyncButton] Sync failed', { error: data.error })
         alert('Sync failed: ' + (data.error || 'Unknown error'))
         return
       }
 
+      console.log('[SyncButton] Sync completed', { 
+        newOrders: data.newOrders, 
+        skipped: data.skipped, 
+        errors: data.errors 
+      })
       setResult(data)
       window.location.reload()
     } catch (error) {
+      console.error('[SyncButton] Sync error', { error })
       alert('Sync failed: ' + (error instanceof Error ? error.message : 'Unknown error'))
     } finally {
       setLoading(false)

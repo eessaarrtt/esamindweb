@@ -474,6 +474,7 @@ export type EtsyListingCreateOrConnectWithoutShopInput = {
 
 export type EtsyListingCreateManyShopInputEnvelope = {
   data: Prisma.EtsyListingCreateManyShopInput | Prisma.EtsyListingCreateManyShopInput[]
+  skipDuplicates?: boolean
 }
 
 export type EtsyListingUpsertWithWhereUniqueWithoutShopInput = {
@@ -1269,6 +1270,7 @@ export type EtsyListingCreateManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * The data used to create many EtsyListings.
    */
   data: Prisma.EtsyListingCreateManyInput | Prisma.EtsyListingCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1287,6 +1289,7 @@ export type EtsyListingCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * The data used to create many EtsyListings.
    */
   data: Prisma.EtsyListingCreateManyInput | Prisma.EtsyListingCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
