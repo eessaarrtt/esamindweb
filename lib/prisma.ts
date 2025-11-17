@@ -11,8 +11,9 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 // Проверка доступности модели Prompt
 if (typeof prisma.prompt === 'undefined') {
-  logger.error('Prisma Client: Prompt model is not available')
-  logger.error('Available models:', Object.keys(prisma).filter(key => !key.startsWith('$')))
+  logger.error('Prisma Client: Prompt model is not available', {
+    availableModels: Object.keys(prisma).filter(key => !key.startsWith('$')),
+  })
 } else {
   logger.debug('Prisma Client: Prompt model is available')
 }

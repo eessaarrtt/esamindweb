@@ -16,9 +16,10 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    logger.debug('Fetching prompts from database')
-    logger.debug('Prisma client available:', !!prisma)
-    logger.debug('Prompt model available:', typeof prisma.prompt !== 'undefined')
+    logger.debug('Fetching prompts from database', {
+      prismaClientAvailable: !!prisma,
+      promptModelAvailable: typeof prisma.prompt !== 'undefined',
+    })
     
     if (typeof prisma.prompt === 'undefined') {
       logger.error('Prompt model is not available in Prisma Client')

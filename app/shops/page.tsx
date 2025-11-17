@@ -4,25 +4,16 @@ import { Footer } from '@/components/Footer'
 import { PageShell } from '@/components/layout/PageShell'
 import { Section } from '@/components/layout/Section'
 import { ShopCard } from '@/components/ui/ShopCard'
-import { SHOPS } from '@/lib/shops'
 
 export default async function ShopsPage() {
   // Get shops from database
-  let dbShops: Array<{ id: number; slug: string; name: string; description: string; category: string }> = []
-  try {
-    dbShops = await prisma.shop.findMany({
-      orderBy: { createdAt: 'desc' },
-    })
-  } catch (error) {
-    console.error('Error fetching shops from database:', error)
-  }
-
-  // Use database shops if available, otherwise fall back to static data
-  const shops = dbShops.length > 0 ? dbShops : SHOPS
+  const shops = await prisma.shop.findMany({
+    orderBy: { createdAt: 'desc' },
+  })
 
   // Group shops by category
   const shopsByCategory = shops.reduce((acc, shop) => {
-    const category = 'category' in shop ? shop.category : shop.categories[0]
+    const category = shop.category
     if (!acc[category]) {
       acc[category] = []
     }
@@ -78,37 +69,16 @@ export default async function ShopsPage() {
                   </span>
                 </div>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {categoryShops.map((shop) => {
-                    // Handle both database shop and static shop types
-                    const isDbShop = 'slug' in shop && 'category' in shop
-                    
-                    if (isDbShop) {
-                      // Database shop type
-                      return (
-                        <ShopCard
-                          key={shop.slug}
-                          name={shop.name}
-                          description={shop.description}
-                          categories={[shop.category]}
-                          href={`/shops/${shop.slug}`}
-                          imageUrl={undefined}
-                        />
-                      )
-                    } else {
-                      // Static shop type
-                      const staticShop = shop as typeof SHOPS[number]
-                      return (
-                        <ShopCard
-                          key={staticShop.id}
-                          name={staticShop.name}
-                          description={staticShop.shortDescription}
-                          categories={staticShop.categories}
-                          href={`/shops/${staticShop.id}`}
-                          imageUrl={staticShop.imageUrl}
-                        />
-                      )
-                    }
-                  })}
+                  {categoryShops.map((shop) => (
+                    <ShopCard
+                      key={shop.slug}
+                      name={shop.name}
+                      description={shop.description}
+                      categories={[shop.category]}
+                      href={`/shops/${shop.slug}`}
+                      imageUrl={undefined}
+                    />
+                  ))}
                 </div>
               </div>
             ))}

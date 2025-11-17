@@ -89,7 +89,7 @@ async function createTestOrder() {
     console.log(`   Created: ${order.createdAt.toISOString()}`)
 
     // Автоматически генерируем чтение
-    if (productCode !== 'unknown') {
+    if (productCode && productCode !== 'unknown' as any) {
       console.log(`\n🤖 Auto-generating reading...`)
       try {
         const readingText = await generateReadingForOrder(order.id)

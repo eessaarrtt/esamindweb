@@ -7,7 +7,6 @@ import { Section } from '@/components/layout/Section'
 import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { BackLink } from '@/components/ui/BackLink'
-import { SHOPS } from '@/lib/shops'
 
 export default async function ShopDetailPage({
   params,
@@ -16,31 +15,20 @@ export default async function ShopDetailPage({
 }) {
   const { slug } = await params
   
-  // Try to get shop from database first
-  let shop = null
-  try {
-    shop = await prisma.shop.findUnique({
-      where: { slug },
-    })
-  } catch (error) {
-    console.error('Error fetching shop from database:', error)
-  }
-
-  // Fall back to static data if not in database
-  if (!shop) {
-    shop = SHOPS.find((s) => s.id === slug) as any
-  }
+  // Get shop from database
+  const shop = await prisma.shop.findUnique({
+    where: { slug },
+  })
 
   if (!shop) {
     notFound()
   }
 
-  const shopName = 'name' in shop ? shop.name : shop.name
-  const shopCategory = 'category' in shop ? shop.category : shop.categories[0]
-  const shopDescription = 'description' in shop ? shop.description : shop.shortDescription
-  const shopLongDescription = 'longDescription' in shop ? undefined : ('longDescription' in shop ? shop.longDescription : shop.description)
-  const shopImageUrl = 'imageUrl' in shop ? shop.imageUrl : undefined
-  const shopExternalUrl = 'externalUrl' in shop ? shop.externalUrl : undefined
+  const shopName = shop.name
+  const shopCategory = shop.category
+  const shopDescription = shop.description
+  const shopImageUrl = undefined
+  const shopExternalUrl = shop.externalUrl || undefined
 
   return (
     <div className="min-h-screen bg-background text-foreground">

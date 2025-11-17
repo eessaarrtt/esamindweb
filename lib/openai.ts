@@ -57,6 +57,11 @@ export async function generateReading(prompt: string): Promise<{ content: string
     const usage = res.usage
     const responseModel = res.model
     
+    if (!usage) {
+      logger.warn('OpenAI response missing usage data', { model: responseModel })
+      throw new Error('OpenAI response missing usage data')
+    }
+    
     // Цены для разных моделей (на ноябрь 2024)
     // gpt-4o: Input $2.50/1M, Output $10.00/1M
     // gpt-4o-mini: Input $0.15/1M, Output $0.60/1M

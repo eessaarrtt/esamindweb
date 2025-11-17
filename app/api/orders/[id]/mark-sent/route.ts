@@ -15,9 +15,10 @@ export async function POST(
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  let orderId: number | undefined
   try {
     const { id } = await params
-    const orderId = parseInt(id)
+    orderId = parseInt(id)
 
     logger.info('Marking order as sent', { orderId })
 
@@ -61,7 +62,7 @@ export async function POST(
     return NextResponse.json({ success: true })
   } catch (error) {
     logger.error('Mark sent error', {
-      orderId: id,
+      orderId,
       error: error instanceof Error ? error.message : String(error),
     })
     return NextResponse.json(
