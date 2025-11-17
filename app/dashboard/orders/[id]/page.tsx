@@ -5,10 +5,11 @@ import { OrderActions } from '@/components/dashboard/OrderActions'
 export default async function OrderDetailPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
   const order = await prisma.order.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt(id) },
     include: { shop: true },
   })
 

@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma'
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await requireAuth()
@@ -13,7 +13,8 @@ export async function POST(
   }
 
   try {
-    const orderId = parseInt(params.id)
+    const { id } = await params
+    const orderId = parseInt(id)
 
     await prisma.order.update({
       where: { id: orderId },

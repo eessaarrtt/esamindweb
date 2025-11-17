@@ -36,9 +36,9 @@ export async function POST(request: NextRequest) {
     }
 
     const prompt = promptBuilder({
-      name: order.name,
-      age: order.age,
-      question: order.question,
+      name: order.name || undefined,
+      age: order.age || undefined,
+      question: order.question || undefined,
       rawPersonalization: order.personalization || undefined,
     })
 

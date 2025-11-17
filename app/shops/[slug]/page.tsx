@@ -12,13 +12,15 @@ import { SHOPS } from '@/lib/shops'
 export default async function ShopDetailPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
+  const { slug } = await params
+  
   // Try to get shop from database first
   let shop = null
   try {
     shop = await prisma.shop.findUnique({
-      where: { slug: params.slug },
+      where: { slug },
     })
   } catch (error) {
     console.error('Error fetching shop from database:', error)
@@ -26,7 +28,7 @@ export default async function ShopDetailPage({
 
   // Fall back to static data if not in database
   if (!shop) {
-    shop = SHOPS.find((s) => s.id === params.slug) as any
+    shop = SHOPS.find((s) => s.id === slug) as any
   }
 
   if (!shop) {
